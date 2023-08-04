@@ -1,8 +1,7 @@
 # Code taken from the 'love_sandwiches' tutorial
 import gspread
 from google.oauth2.service_account import Credentials
-
-
+from pprint import pprint
 
 # The scope lists the APIs the program should access in order to run
 # variables whose value does not change are 'constants'
