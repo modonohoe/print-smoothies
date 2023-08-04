@@ -20,7 +20,6 @@ SHEET = GSPREAD_CLIENT.open('print_smoothies')
 # accesses names and ingredients of smoothies
 menu = SHEET.worksheet('menu')
 data = menu.get_all_values()
-print(data)
 
 orders = SHEET.worksheet('orders')
 
