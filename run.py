@@ -25,23 +25,9 @@ orders = SHEET.worksheet('orders')
 
 regulars = SHEET.worksheet('regulars')
 
-def main():
-    print("Welcome to print(smoothies)!\n")
-    print("Dublin's famous on-the-go smoothie bar 🍹 \n")
-    print("Location: Dublin City Centre\n")
-    print("We are open from Monday to Friday 7am-4pm\n")
-    print("Drop in to order one of our speciality smoothies\n")
-    print("or order for collection through this terminal!\n")
-    print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
-
-
-    print("Please enter one of the following options (1, 2 or 3) then PRESS ENTER:")
-    print(" 1 = view current menu \n 2 = order \n 3 = set up reocurring order \n")
-
-
-main()
-
-# Function yet to be called
+customer_order = [] 
+customer_total = []
+ 
 
 def display_menu():
     """
@@ -55,32 +41,64 @@ def display_menu():
     # give option to order
 
     # give option to return to Main Menu
-    return_to_main = input("\nReturn to main menu? Y / N\nYour choice: ").capitalize
-    if return_to_main == ("Y"):
-        display_menu()
-    elif return_to_main == ("N"):
-        # option to order
+    return_to_main = input("\nReturn to main menu? Y / N\n")
+
+    if return_to_main == "Y" or "y":
+        main()
+    
+    elif return_to_main == "N" or "n":
+        # option to order CALL ORDER FUNCTION
         print("okay")
+    
     else:
         raise ValueError(
         f"Please enter either Y or N(previous entry not valid)"
         )
 
-    return_to_main()
+smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
+             "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+             "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
+             "Peaches and Cream", "print(smoothies) Power Pop"]
 
-menu_action = input("Your Choice: ")
 
-if menu_action == "1":
-    display_menu()
     
-elif menu_action == "2":
-    print("let's goooo") 
-elif menu_action == "3":
-    print("Let's set up order")
-else:
-    raise ValueError(
-        f"Please enter either 1, 2 or 3 (previous entry not valid)"
+
+
+# reoccuring order 
+
+def main():
+    print("Welcome to print(smoothies)!\n")
+    print("Dublin's famous on-the-go smoothie bar 🍹 \n")
+    print("Location: Dublin City Centre\n")
+    print("We are open from Monday to Friday 7am-4pm\n")
+    print("Drop in to order one of our speciality smoothies\n")
+    print("or order for collection through this terminal!\n")
+    print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
+
+
+    print("Please enter one of the following options (1, 2 or 3) then PRESS ENTER:")
+    print(" 1 = view current menu \n 2 = order \n 3 = set up reocurring order \n")
+
+    menu_action = input("Your Choice: ")
+
+    if menu_action == "1":
+        display_menu()
+    
+    elif menu_action == "2":
+        print("let's goooo") 
+    elif menu_action == "3":
+        print("Let's set up order")
+    else:
+        raise ValueError(
+            f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
+
+
+
+main()
+
+ticket = cust_order()
+
 
 
 
