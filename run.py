@@ -61,7 +61,23 @@ smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
              "Peaches and Cream", "print(smoothies) Power Pop"]
 
 
-    
+# one-off order
+
+class cust_order:
+    """
+    Defines the customers one-off order
+    """
+    def __init__(self):
+        self.name = "Damien"
+        self.smoothie_name = 5
+        self.smoothie_size = 
+        self.quantity = 2
+        self.total = 
+
+
+
+    def 
+
 
 
 # reoccuring order 
