@@ -1,21 +1,21 @@
-def select_size():
-    print("What size would you like?")
-    print("--> type R for regular (500ml) €4")
-    print("--> type L for large (700ml) €5")
+def select_yoghurt():
+    print("Which yoghurt would you like?")
+    print("--> type D for dairy")
+    print("--> type S for soya")
 
     while True:
-        smth_size = input("Enter size: \n").upper()
-   
-        if smth_size == "R":
-            print("You chose regular")
+        select_yoghurt = input("Enter choice: \n").upper() # ensures input is in uppercase
+
+        if select_yoghurt == "D":
+            print("You chose dairy yoghurt")
             break
             # apend to class
-        elif smth_size == "L":
-            print("You chose large")
+        elif select_yoghurt == "S":
+            print("You chose soya yoghurt")
             break
             # apend to class
         else:
-            print("Please choose either 'R' or 'L'")
+            print("Please choose either 'D' or 'S'")
 
 
-select_size()
+select_yoghurt()
