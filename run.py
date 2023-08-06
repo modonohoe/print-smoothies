@@ -1,4 +1,3 @@
-# Code taken from the 'love_sandwiches' tutorial
 import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
@@ -27,6 +26,7 @@ orders = SHEET.worksheet('orders')
 regulars = SHEET.worksheet('regulars')
 
 # https://www.geeksforgeeks.org/python-datetime-timedelta-function/
+# https://www.w3schools.com/python/python_datetime.asp
 # future feature could import timezone library
 current_time = datetime.now()
 collection_time = current_time + timedelta(hours=1.5)
@@ -35,6 +35,10 @@ collection_time = current_time + timedelta(hours=1.5)
 # Code modified from Love Sandwiches tutorial
 # https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
 
+smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
+             "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+             "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
+             "Peaches and Cream", "print(smoothies) Power Pop"]
 
 class Order:
     # creates an instance of order
@@ -62,18 +66,17 @@ class Order:
 
 def return_to_main_menu():
     # give option to return to Main Menu
-    return_to_main_menu = input("\nReturn to main menu? Y / N\n")
-    if return_to_main_menu == "Y" or "y":
-        main_menu()
-
-    # option to order CALL ORDER FUNCTION
-    elif return_to_main_menu == "N" or "n":
-        print("okay")
-
-    else:
-        raise ValueError(
-            f"Please enter either Y or N(previous entry not valid)"
-            )
+    while True:
+        return_to_main_menu = input("\nReturn to main menu? Y / N\n")
+        if return_to_main_menu in ("Y", "y"):
+            main_menu()
+            break
+        # option to order CALL ORDER FUNCTION
+        elif return_to_main_menu in ("N", "n"):
+            print("okay")
+            break
+        else:
+            print("Please enter either Y or N(previous entry not valid)")
 
 
 def display_menu():
@@ -104,6 +107,23 @@ def get_name():
 
     return customer_name
 
+
+def select_smoothie():
+    print("Choose your smoothie:")
+    print("1 = Tropical Dreamwave\n")
+    print("2 = Berry Bliss")
+    print("3 = Peanut Butter Power")
+    print("4 = Strawbalicious Banana Blast")
+    print("5 = Protein-Packed Choco Cherry")
+    print("6 = Green Energy Boost")
+    print("7 = Mango Magic Mix")
+    print("8 = Pomegranate Passion")
+    print("9 = Peaches and Cream")
+    print("10 = print(smoothies) Power Pop")
+
+    chosen_smoothie = input("Enter smoothie number(id): ")
+
+    
 
 def main_menu():
     print("Welcome to print(smoothies)!\n")
