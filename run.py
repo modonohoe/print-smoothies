@@ -35,10 +35,6 @@ collection_time = current_time + timedelta(hours=1.5)
 # Code modified from Love Sandwiches tutorial
 # https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
 
-smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
-             "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-             "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
-             "Peaches and Cream", "print(smoothies) Power Pop"]
 
 class Order:
     # creates an instance of order
@@ -109,8 +105,12 @@ def get_name():
 
 
 def select_smoothie():
-    print("Choose your smoothie:")
-    print("1 = Tropical Dreamwave\n")
+    # Reminds user of numbers and prompts 
+    # User enters number of chosen smoothie
+    # Number will choose corresponding index from list
+
+    print("MAKE YOUR CHOICE:\n")
+    print("1 = Tropical Dreamwave")
     print("2 = Berry Bliss")
     print("3 = Peanut Butter Power")
     print("4 = Strawbalicious Banana Blast")
@@ -119,11 +119,24 @@ def select_smoothie():
     print("7 = Mango Magic Mix")
     print("8 = Pomegranate Passion")
     print("9 = Peaches and Cream")
-    print("10 = print(smoothies) Power Pop")
+    print("10 = print(smoothies) Power Pop\n")
 
-    chosen_smoothie = input("Enter smoothie number(id): ")
+    smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
+                 "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+                 "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
+                 "Peaches and Cream", "print(smoothies) Power Pop"]
 
+    # parse user input to use as an index number
+    smth_choice = int(input("Enter smoothie number: "))
     
+    # condition checks that number is not <10
+    if 1 <= smth_choice <= len(smoothies):
+        smth_choice = smoothies[smth_choice - 1]
+        print(smth_choice + " added to order\n")
+        return smth_choice
+    else:
+        print("Invalid smoothie number. Please try again.")
+
 
 def main_menu():
     print("Welcome to print(smoothies)!\n")
