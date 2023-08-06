@@ -59,17 +59,22 @@ smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
              "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
              "Peaches and Cream", "print(smoothies) Power Pop"]
 
-# one-off order
 
 def get_name():
-    customer_name = input("Whose name should we put on this order?\n")
+    customer_name = None
+
     while True:
-        try:
-            customer_name.isalpha()
-            print("Thank you " + customer_name.capitalize() + ", " + "let's proceed with the order")
+        customer_name = input("Whose name should we put on this order?\n")
+
+        if not customer_name.isalpha() and len(customer_name) < 10():
+            print("Please try again - ensure your name does not exceed 10 characters or include any numbers")
+            continue
+        else:
             break
-        except ValueError:
-            print("Please try again - ensure your name does not exceed 10 characters or include any numbers") 
+        
+    print("Thank you " + customer_name.capitalize() + ", " + "let's proceed with the order")
+    return customer_name
+             
 
 get_name()
 
