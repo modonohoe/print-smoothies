@@ -123,11 +123,11 @@ def select_smoothie():
 
     smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
                  "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-                 "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
-                 "Peaches and Cream", "print(smoothies) Power Pop"]
+                 "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion"
+                 , "Peaches and Cream", "print(smoothies) Power Pop"]
 
     # parse user input to use as an index number
-    smth_choice = int(input("Enter smoothie number: "))
+    smth_choice = int(input("Enter smoothie id number: "))
     
     # condition checks that number is not <10
     if 1 <= smth_choice <= len(smoothies):
@@ -162,7 +162,7 @@ def main_menu():
         )
 
 
-def main():
+# def main():
     main_menu()
 
 
