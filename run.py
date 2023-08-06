@@ -25,39 +25,33 @@ orders = SHEET.worksheet('orders')
 
 regulars = SHEET.worksheet('regulars')
 
-customer_order = [] 
-customer_total = []
- 
+
+def return_to_main_menu():
+    # give option to return to Main Menu
+    return_to_main_menu = input("\nReturn to main menu? Y / N\n")
+    if return_to_main_menu == "Y" or "y":
+        main_menu()
+
+    # option to order CALL ORDER FUNCTION
+    elif return_to_main_menu == "N" or "n":
+        print("okay")
+
+    else:
+        raise ValueError(
+            f"Please enter either Y or N(previous entry not valid)"
+            )
+
+
 def display_menu():
     """
     Displays menu items for customer
     """
     print("You chose option 1. Here is our current menu: \n")
-    print("All of our print(smoothies) are made with a yoghurt base (dairy OR soya)")
-    print("PLEASE NOTE THE NUMBER OF YOUR CHOSEN SMOOTHIE FOR THE ORDERING PROCESS \n")
+    print("          DRINKS MENU         \n")
+    print("All of our drinks are made with a yoghurt base (dairy OR soya)")
+    print("PLEASE NOTE YOUR SMOOTHIE'S NUMBER FOR THE ORDERING PROCESS \n")
     pprint(current_menu)
-
-    # give option to order
-
-    # give option to return to Main Menu
-    return_to_main = input("\nReturn to main menu? Y / N\n")
-
-    if return_to_main == "Y" or "y":
-        main()
-    
-    elif return_to_main == "N" or "n":
-        # option to order CALL ORDER FUNCTION
-        print("okay")
-    
-    else:
-        raise ValueError(
-        f"Please enter either Y or N(previous entry not valid)"
-        )
-
-smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
-             "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-             "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
-             "Peaches and Cream", "print(smoothies) Power Pop"]
+    return_to_main_menu()
 
 
 def get_name():
@@ -66,57 +60,36 @@ def get_name():
     while True:
         customer_name = input("Whose name should we put on this order?\n")
 
-        if not customer_name.isalpha() and len(customer_name) < 10():
-            print("Please try again - ensure your name does not exceed 10 characters or include any numbers")
+        if not customer_name.isalpha() or len(customer_name) < 10:
+            print("Please try again - ensure your name does not:")
+            print("exceed 10 characters or include any numbers")
             continue
         else:
             break
-        
-    print("Thank you " + customer_name.capitalize() + ", " + "let's proceed with the order")
+    print("Thank you " + customer_name.capitalize() + "!")
+
     return customer_name
-             
-
-get_name()
-
-
 
 # Code modified from Love Sandwiches tutorial
-class Cust_order():
-    """
-    Creates an instance of customer's order
-    """
-    def __init__(self):
-        self.name = ""
-        self.smoothie_name = ""
-        self.smoothie_size = ""
-        self.quantity = 0
-        self.total = 0
+# https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
 
 
-
-def generate_order():
-    ticket = cust_order()
-
-# reoccuring order 
-
-def main():
+def main_menu():
     print("Welcome to print(smoothies)!\n")
     print("Dublin's famous on-the-go smoothie bar 🍹 \n")
-    print("Location: Dublin City Centre\n")
     print("We are open from Monday to Friday 7am-4pm\n")
     print("Drop in to order one of our speciality smoothies\n")
     print("or order for collection through this terminal!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
-    print("Please enter one of the following options (1, 2 or 3) then PRESS ENTER:")
-    print(" 1 = view current menu \n 2 = order \n 3 = set up reocurring order \n")
+    print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
+    print(" 1 = view menu \n 2 = order \n 3 = set up reocurring order \n")
 
     menu_action = input("Your Choice: ")
 
     if menu_action == "1":
         display_menu()
-    
     elif menu_action == "2":
-        print("let's goooo") 
+        print("let's goooo")
     elif menu_action == "3":
         print("Let's set up order")
     else:
@@ -124,18 +97,9 @@ def main():
             f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
 
+
+def main():
+    main_menu()
+
+
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
