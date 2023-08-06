@@ -4,8 +4,6 @@ from pprint import pprint
 from datetime import datetime, timedelta
 
 # The scope lists the APIs the program should access in order to run
-# variables whose value does not change are 'constants'
-# constant variable names are written in capital letters
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -25,15 +23,13 @@ orders = SHEET.worksheet('orders')
 
 regulars = SHEET.worksheet('regulars')
 
-# https://www.geeksforgeeks.org/python-datetime-timedelta-function/
-# https://www.w3schools.com/python/python_datetime.asp
-# future feature could import timezone library
+# based on w3schools article and geeksforgeeks.or for .timedelta
+
 current_time = datetime.now()
 collection_time = current_time + timedelta(hours=1.5)
 # print(current_time.strftime("%X"))
 
-# Code modified from Love Sandwiches tutorial
-# https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
+# code modified from Love Sandwiches tutorial and influenced by TechWithTim
 
 
 class Order:
