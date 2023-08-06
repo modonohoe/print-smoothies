@@ -26,6 +26,12 @@ orders = SHEET.worksheet('orders')
 
 regulars = SHEET.worksheet('regulars')
 
+# https://www.geeksforgeeks.org/python-datetime-timedelta-function/
+# future feature could import timezone library
+current_time = datetime.now()
+collection_time = current_time + timedelta(hours=1.5)
+# print(current_time.strftime("%X"))
+
 # Code modified from Love Sandwiches tutorial
 # https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
 
@@ -49,12 +55,9 @@ class Order:
 
 # class Reoccuring(Order):
     # adds further methods to a regular order
-
-# https://www.geeksforgeeks.org/python-datetime-timedelta-function/
-# future feature could import timezone library
-current_time = datetime.now()
-collection_time = current_time + timedelta(hours=1.5)
-# print(current_time.strftime("%X"))
+    # def __init__(self, collection_day)
+    #     super().__init__(customer, smoothie, _size, yoghurt, price)
+    #     self.collection_day = collection_day
 
 
 def return_to_main_menu():
