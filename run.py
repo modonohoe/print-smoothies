@@ -28,6 +28,8 @@ regulars = SHEET.worksheet('regulars')
 
 # Code modified from Love Sandwiches tutorial
 # https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
+
+
 class Order:
     # creates an instance of order
     def __init__(self, customer, smoothie, _size, yoghurt, price):
@@ -45,9 +47,14 @@ class Order:
         print(f"Total: €{self.price}")
 
 
-class Reoccuring(Order):
+# class Reoccuring(Order):
     # adds further methods to a regular order
-    def collection_time(self):
+
+# https://www.geeksforgeeks.org/python-datetime-timedelta-function/
+# future feature could import timezone library
+current_time = datetime.now()
+collection_time = current_time + timedelta(hours=1.5)
+# print(current_time.strftime("%X"))
 
 
 def return_to_main_menu():
