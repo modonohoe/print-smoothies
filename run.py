@@ -28,7 +28,6 @@ regulars = SHEET.worksheet('regulars')
 customer_order = [] 
 customer_total = []
  
-
 def display_menu():
     """
     Displays menu items for customer
@@ -60,25 +59,38 @@ smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
              "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion",
              "Peaches and Cream", "print(smoothies) Power Pop"]
 
-
 # one-off order
 
-class cust_order:
+def get_name():
+    customer_name = input("Whose name should we put on this order?\n")
+    while True:
+        try:
+            customer_name.isalpha()
+            print("Thank you " + customer_name.capitalize() + ", " + "let's proceed with the order")
+            break
+        except ValueError:
+            print("Please try again - ensure your name does not exceed 10 characters or include any numbers") 
+
+get_name()
+
+
+
+# Code modified from Love Sandwiches tutorial
+class Cust_order():
     """
-    Defines the customers one-off order
+    Creates an instance of customer's order
     """
     def __init__(self):
-        self.name = "Damien"
-        self.smoothie_name = 5
-        self.smoothie_size = 
-        self.quantity = 2
-        self.total = 
+        self.name = ""
+        self.smoothie_name = ""
+        self.smoothie_size = ""
+        self.quantity = 0
+        self.total = 0
 
 
 
-    def 
-
-
+def generate_order():
+    ticket = cust_order()
 
 # reoccuring order 
 
@@ -90,8 +102,6 @@ def main():
     print("Drop in to order one of our speciality smoothies\n")
     print("or order for collection through this terminal!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
-
-
     print("Please enter one of the following options (1, 2 or 3) then PRESS ENTER:")
     print(" 1 = view current menu \n 2 = order \n 3 = set up reocurring order \n")
 
@@ -109,11 +119,7 @@ def main():
             f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
 
-
-
 main()
-
-ticket = cust_order()
 
 
 
