@@ -2,6 +2,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
+from datetime import datetime, timedelta
 
 # The scope lists the APIs the program should access in order to run
 # variables whose value does not change are 'constants'
@@ -25,6 +26,29 @@ orders = SHEET.worksheet('orders')
 
 regulars = SHEET.worksheet('regulars')
 
+# Code modified from Love Sandwiches tutorial
+# https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
+class Order:
+    # creates an instance of order
+    def __init__(self, customer, smoothie, _size, yoghurt, price):
+        self.customer = customer
+        self.smoothie = smoothie
+        self._size = _size
+        self.yoghurt = yoghurt
+        self.price = price
+
+    def ticket(self):
+        print(f"{self.customer}'s order:")
+        print(f"Smoothie(s): {self.smoothie}")
+        print(f"Size(s): {self._size}")
+        print(f"Yoghurt(s): {self.yoghurt}")
+        print(f"Total: €{self.price}")
+
+
+class Reoccuring(Order):
+    # adds further methods to a regular order
+    def collection_time(self):
+
 
 def return_to_main_menu():
     # give option to return to Main Menu
@@ -46,7 +70,7 @@ def display_menu():
     """
     Displays menu items for customer
     """
-    print("You chose option 1. Here is our current menu: \n")
+    print("Here is our current menu: \n")
     print("          DRINKS MENU         \n")
     print("All of our drinks are made with a yoghurt base (dairy OR soya)")
     print("PLEASE NOTE YOUR SMOOTHIE'S NUMBER FOR THE ORDERING PROCESS \n")
@@ -69,9 +93,6 @@ def get_name():
     print("Thank you " + customer_name.capitalize() + "!")
 
     return customer_name
-
-# Code modified from Love Sandwiches tutorial
-# https://www.youtube.com/watch?v=JeznW_7DlB0&ab_channel=TechWithTim
 
 
 def main_menu():
