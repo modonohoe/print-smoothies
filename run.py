@@ -105,7 +105,7 @@ def get_name():
 
 
 def select_smoothie():
-    # Reminds user of numbers and prompts 
+    # Reminds user of numbers and prompts
     # User enters number of chosen smoothie
     # Number will choose corresponding index from list
 
@@ -116,15 +116,15 @@ def select_smoothie():
     print("4 = Strawbalicious Banana Blast")
     print("5 = Protein-Packed Choco Cherry")
     print("6 = Green Energy Boost")
-    print("7 = Mango Magic Mix")
+    print("7 = Mango Mix")
     print("8 = Pomegranate Passion")
     print("9 = Peaches and Cream")
     print("10 = print(smoothies) Power Pop\n")
 
     smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
                  "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-                 "Green Energy Boost", "Mango Magic Mix", "Pomegranate Passion"
-                 , "Peaches and Cream", "print(smoothies) Power Pop"]
+                 "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
+                 "Peaches and Cream", "print(smoothies) Power Pop"]
 
     # parse user input to use as an index number
     smth_choice = int(input("Enter smoothie id number: "))
@@ -137,14 +137,15 @@ def select_smoothie():
     else:
         print("Invalid smoothie number. Please try again.")
 
+
 def select_size():
     print("What size would you like?")
     print("--> type R for regular (500ml) €4")
     print("--> type L for large (700ml) €5")
 
     while True:
-        smth_size = input("Enter size: \n").upper() # ensures input is in uppercase
- 
+        smth_size = input("Enter size: \n").upper()  # converts if lower
+
         if smth_size == "R":
             print("You chose regular")
             break
@@ -156,13 +157,14 @@ def select_size():
         else:
             print("Please enter either 'R' or 'L'")
 
+
 def select_yoghurt():
     print("Which yoghurt would you like?")
     print("--> type D for dairy")
     print("--> type S for soya")
 
     while True:
-        select_yoghurt = input("Enter choice: \n").upper() # ensures input is in uppercase
+        select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
 
         if select_yoghurt == "D":
             print("You chose dairy yoghurt")
@@ -203,5 +205,4 @@ def main_menu():
 # def main():
     main_menu()
 
-
-main()
+# main()
