@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 from pprint import pprint
 from datetime import datetime, timedelta
 
+
 # The scope lists the APIs the program should access in order to run
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -10,21 +11,22 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('print_smoothies')
+
 
 # accesses names and ingredients of smoothies
 menu = SHEET.worksheet('menu')
 current_menu = menu.get_all_values()
 
 orders = SHEET.worksheet('orders')
-
 regulars = SHEET.worksheet('regulars')
 
-# based on w3schools article and geeksforgeeks.or for .timedelta
 
+# based on w3schools article and geeksforgeeks.or for .timedelta
 current_time = datetime.now()
 collection_time = current_time + timedelta(hours=1.5)
 # print(current_time.strftime("%X"))
@@ -33,7 +35,9 @@ collection_time = current_time + timedelta(hours=1.5)
 
 
 class Order:
-    # creates an instance of order
+    """
+    creates an instance of customer order
+    """
     def __init__(self, customer, smoothie, _size, yoghurt, price):
         self.customer = customer
         self.smoothie = smoothie
@@ -55,9 +59,52 @@ class Order:
     #     super().__init__(customer, smoothie, _size, yoghurt, price)
     #     self.collection_day = collection_day
 
+def main_menu():
+    """
+    Welcome message to customer
+    Displays options to view menu, order or
+    set up a reoccuring order
+    """
+    print("\n\nWelcome to print(smoothies)!\n")
+    print("Dublin's famous on-the-go smoothie bar 🍹 \n")
+    print("We are open from Monday to Friday 7am-4pm\n")
+    print("Drop in to order one of our speciality smoothies\n")
+    print("or order for collection through this terminal!\n")
+    print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
+    print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
+    print(" 1 = view menu \n 2 = order \n 3 = set up reocurring order \n")
+
+    menu_action = input("Your Choice: ")
+
+    if menu_action == "1":
+        display_menu()
+    elif menu_action == "2":
+        print("let's goooo")
+    elif menu_action == "3":
+        print("Let's set up order")
+    else:
+        raise ValueError(
+            f"Please enter either 1, 2 or 3 (previous entry not valid)"
+        )
+
+
+def display_menu():
+    """
+    displays menu items for customer
+    """
+    print("Here is our current menu: \n")
+    print("          DRINKS MENU         \n")
+    print("All of our drinks are made with a yoghurt base (dairy OR soya)")
+    print("PLEASE NOTE YOUR SMOOTHIE'S NUMBER FOR THE ORDERING PROCESS \n")
+  
+    pprint(current_menu)  # Google Sheets data
+    return_to_main_menu()
+
 
 def return_to_main_menu():
-    # give option to return to Main Menu
+    """
+    gives option to return to Main Menu
+    """
     while True:
         return_to_main_menu = input("\nReturn to main menu? Y / N\n")
         if return_to_main_menu in ("Y", "y"):
@@ -68,22 +115,19 @@ def return_to_main_menu():
             print("okay")
             break
         else:
-            print("Please enter either Y or N(previous entry not valid)")
+            print("Please enter either Y or N (previous entry not valid)")
 
 
-def display_menu():
-    """
-    Displays menu items for customer
-    """
-    print("Here is our current menu: \n")
-    print("          DRINKS MENU         \n")
-    print("All of our drinks are made with a yoghurt base (dairy OR soya)")
-    print("PLEASE NOTE YOUR SMOOTHIE'S NUMBER FOR THE ORDERING PROCESS \n")
-    pprint(current_menu)
-    return_to_main_menu()
+# GENERATE ORDER BY CREATING INSTANCE OF CUSTOMER (funtion?)
+# Instance of customer
+# person(Order) = ["Damien", "Berry Bliss", large, soya, 5]
 
 
 def get_name():
+    """
+    gets the customers name
+    (refer to class variable?)
+    """
     customer_name = None
 
     while True:
@@ -101,9 +145,10 @@ def get_name():
 
 
 def select_smoothie():
-    # Reminds user of numbers and prompts
-    # User enters number of chosen smoothie
-    # Number will choose corresponding index from list
+    """
+    User enters the id number of their chosen smoothie
+    Number will choose corresponding index from list
+    """
 
     print("MAKE YOUR CHOICE:\n")
     print("1 = Tropical Dreamwave")
@@ -132,6 +177,8 @@ def select_smoothie():
         return smth_choice
     else:
         print("Invalid smoothie number. Please try again.")
+
+    return smth_choice  # customers smoothie
 
 
 def select_size():
@@ -174,31 +221,87 @@ def select_yoghurt():
             print("Please enter either 'D' or 'S'")
 
 
-def main_menu():
-    print("Welcome to print(smoothies)!\n")
-    print("Dublin's famous on-the-go smoothie bar 🍹 \n")
-    print("We are open from Monday to Friday 7am-4pm\n")
-    print("Drop in to order one of our speciality smoothies\n")
-    print("or order for collection through this terminal!\n")
-    print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
-    print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
-    print(" 1 = view menu \n 2 = order \n 3 = set up reocurring order \n")
-
-    menu_action = input("Your Choice: ")
-
-    if menu_action == "1":
-        display_menu()
-    elif menu_action == "2":
-        print("let's goooo")
-    elif menu_action == "3":
-        print("Let's set up order")
-    else:
-        raise ValueError(
-            f"Please enter either 1, 2 or 3 (previous entry not valid)"
-        )
+def edit_order():
+    """
+    gives the customer the option to either
+    add to their order, remove item(s) or
+    go back to the review menu
+    """
+    print("Let's edit your order. Please select one of the following options:")
+    print("--> A to add another item")
+    print("--> R to add remove an item")
+    print("--> G to go back to checkout")
 
 
-# def main():
-    main_menu()
+def review():
+    """
+    displays current order to customer
+    gives option to edit the order
+    or proceed and confirm the order
+    """
+    print("Your order: \n\n")
+    # call on ticket function from Order class??
+
+    print("Please enter Y to confirm, or N to edit your order 🙂")
+    print("(Note: Payment for your order upon collection)\n")
+
+    while True:
+        confirmation = input("Are you happy to proceed with this order?: ")
+
+        if confirmation in ("Y", "y"):
+            break
+
+        elif confirmation in ("N", "n"):
+            edit_order()
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
+
+
+def end_single():
+    """
+    Displays final confirmation message
+    for a 'one-off' single order
+    """
+    print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
+    print("Your order will be available for collection TODAY from:\n")
+    print("           " + current_time.strftime("%X") + "\n")
+    print("Thank you for ordering with print(smoothies)\n\n")
+
+    # adapted return_to_main_menu function
+    while True:
+        end_single = input("\nReturn to main menu? Y / N\n")
+        if end_single in ("Y", "y"):
+            main_menu()
+            break
+        elif end_single in ("N", "n"):
+            print("Have a great day 🙂")
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
+
+
+def end_reoccuring():
+    """
+    Displays final confirmation message
+    for a reoccuring order
+    """
+    print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
+    print("Your order will be available ???????????????????:\n")
+    print("           " + current_time.strftime("%X") + "\n")
+    print("Thank you for ordering with print(smoothies)\n\n")
+
+    # adapted return_to_main_menu function
+    while True:
+        end_single = input("\nReturn to main menu? Y / N\n")
+        if end_single in ("Y", "y"):
+            main_menu()
+            break
+        elif end_single in ("N", "n"):
+            print("Have a great day 🙂")
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
+
 
 # main()
