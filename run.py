@@ -34,19 +34,39 @@ collection_time = current_time + timedelta(hours=1.5)
 # code modified from Love Sandwiches tutorial and influenced by TechWithTim
 
 
+def get_name():
+    """
+    gets the customers name
+    this will then be linked to their order
+    customer name must be 10 characters max and letters only
+    """
+    customer_name = None
+
+    while True:
+        customer_name = input("Whose name should we put on this order?\n")
+
+        if not customer_name.isalpha() or len(customer_name) < 10:
+            print("Please try again - ensure your name does not:")
+            print("exceed 10 characters or include any numbers")
+            continue
+        else:
+            break
+    print("Thank you " + customer_name.capitalize() + "!")
+
+    return customer_name
+
+
 class Order:
     """
-    creates an instance of customer order
+    creates an instance of customer's smoothie order
     """
-    def __init__(self, customer, smoothie, _size, yoghurt, price):
-        self.customer = customer
-        self.smoothie = smoothie
-        self._size = _size
-        self.yoghurt = yoghurt
-        self.price = price
+    def __init__(self, smoothie, _size, yoghurt, price):
+        self.smoothie = []
+        self._size = []
+        self.yoghurt = []
+        self.price = []
 
     def ticket(self):
-        print(f"{self.customer}'s order:")
         print(f"Smoothie(s): {self.smoothie}")
         print(f"Size(s): {self._size}")
         print(f"Yoghurt(s): {self.yoghurt}")
@@ -96,7 +116,7 @@ def display_menu():
     print("          DRINKS MENU         \n")
     print("All of our drinks are made with a yoghurt base (dairy OR soya)")
     print("PLEASE NOTE YOUR SMOOTHIE'S NUMBER FOR THE ORDERING PROCESS \n")
-  
+
     pprint(current_menu)  # Google Sheets data
     return_to_main_menu()
 
@@ -116,32 +136,6 @@ def return_to_main_menu():
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
-
-
-# GENERATE ORDER BY CREATING INSTANCE OF CUSTOMER (funtion?)
-# Instance of customer
-# person(Order) = ["Damien", "Berry Bliss", large, soya, 5]
-
-
-def get_name():
-    """
-    gets the customers name
-    (refer to class variable?)
-    """
-    customer_name = None
-
-    while True:
-        customer_name = input("Whose name should we put on this order?\n")
-
-        if not customer_name.isalpha() or len(customer_name) < 10:
-            print("Please try again - ensure your name does not:")
-            print("exceed 10 characters or include any numbers")
-            continue
-        else:
-            break
-    print("Thank you " + customer_name.capitalize() + "!")
-
-    return customer_name
 
 
 def select_smoothie():
@@ -178,10 +172,15 @@ def select_smoothie():
     else:
         print("Invalid smoothie number. Please try again.")
 
-    return smth_choice  # customers smoothie
+    return smth_choice
+    customer_order.smoothie.append(smth_choice)
 
 
 def select_size():
+    """
+    Prompts customer for the size smoothie
+    Appends choice to customer_order._size
+    """
     print("What size would you like?")
     print("--> type R for regular (500ml) €4")
     print("--> type L for large (700ml) €5")
@@ -191,17 +190,22 @@ def select_size():
 
         if smth_size == "R":
             print("You chose regular")
+            customer_order._size.append("regular")
             break
-            # apend to class
         elif smth_size == "L":
             print("You chose large")
+            customer_order._size.append("large")
             break
-            # apend to class
         else:
             print("Please enter either 'R' or 'L'")
 
 
+
 def select_yoghurt():
+    """
+    Prompts customer for the size smoothie
+    Appends choice to customer_order.yoghurt
+    """
     print("Which yoghurt would you like?")
     print("--> type D for dairy")
     print("--> type S for soya")
@@ -211,12 +215,12 @@ def select_yoghurt():
 
         if select_yoghurt == "D":
             print("You chose dairy yoghurt")
+            customer_order.yoghurt.append("dairy")
             break
-            # apend to class
         elif select_yoghurt == "S":
             print("You chose soya yoghurt")
+            customer_order.yoghurt.append("soya")
             break
-            # apend to class
         else:
             print("Please enter either 'D' or 'S'")
 
@@ -304,4 +308,5 @@ def end_reoccuring():
             print("Please enter either Y or N (previous entry not valid)")
 
 
-# main()
+main_menu()
+customer_order = customer_name + Order()
