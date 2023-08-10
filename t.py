@@ -3,3 +3,6 @@
         self._size = size
         self.yoghurt = yoghurt
         self.price = price
+
+def add_to_order(Order, smth_choice):
+    Order.smoothie.append(smth_choice)
