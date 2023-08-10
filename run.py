@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from datetime import datetime, timedelta
-
+from dataclasses import dataclass
 
 # The scope lists the APIs the program should access in order to run
 SCOPE = [
@@ -34,147 +34,145 @@ collection_time = current_time + timedelta(hours=1.5)
 # code modified from Love Sandwiches tutorial and influenced by TechWithTim
 
 
+@dataclass
 class Order:
     """
     creates an instance of customer's smoothie order
     """
-    def __init__(self, smoothie, _size, yoghurt, price):
-        self.smoothie = [""]
-        self._size = [""]
-        self.yoghurt = [""]
-        self.price = [5]
+    customer: str
+    smoothie: str
+    _size: str
+    yoghurt: str
+    price: int
 
-    def get_name():
-        """
-        gets the customers name
-        this will then be linked to their order
-        customer name must be 10 characters max and letters only
-        """
-        customer_name = None
 
-        while True:
-            customer_name = input("Whose name should we put on this order?\n")
+def get_name():
+    """
+    gets the customers name
+    this will then be linked to their order
+    customer name must be 10 characters max and letters only
+    """
+    name = None
 
-            if not customer_name.isalpha() or len(customer_name) < 10:
-                print("Please try again - ensure your name does not:")
-                print("exceed 10 characters or include any numbers")
-                continue
-            else:
-                break
-        print("Thank you " + customer_name.capitalize() + "!")
+    while True:
+        name = input("Whose name should we put on this order?\n")
 
-        return customer_name
-
-    get_name()
-
-    def select_smoothie():
-        """
-        User enters the id number of their chosen smoothie
-        Number will choose corresponding index from list
-        """
-
-        print("MAKE YOUR CHOICE:\n")
-        print("1 = Tropical Dreamwave")
-        print("2 = Berry Bliss")
-        print("3 = Peanut Butter Power")
-        print("4 = Strawbalicious Banana Blast")
-        print("5 = Protein-Packed Choco Cherry")
-        print("6 = Green Energy Boost")
-        print("7 = Mango Mix")
-        print("8 = Pomegranate Passion")
-        print("9 = Peaches and Cream")
-        print("10 = print(smoothies) Power Pop\n")
-
-        smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
-                    "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-                    "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
-                    "Peaches and Cream", "print(smoothies) Power Pop"]
-
-        # parse user input to use as an index number
-        smth_choice = int(input("Enter smoothie id number: "))
-
-        # condition checks that number is not <10
-        if 1 <= smth_choice <= len(smoothies):
-            smth_choice = smoothies[smth_choice - 1]
-            print(smth_choice + " added to order\n")
-            return smth_choice
+        if not name.isalpha() or len(name) < 10:
+            print("Please try again - ensure your name does not:")
+            print("exceed 10 characters or include any numbers")
+            continue
         else:
-            print("Invalid smoothie number. Please try again.")
+            break
+    print("Thank you " + name.capitalize() + "!")
 
+    return name
+    name = Order.customer
+
+
+def select_smoothie():
+    """
+    User enters the id number of their chosen smoothie
+    Number will choose corresponding index from list
+    """
+
+    print("MAKE YOUR CHOICE:\n")
+    print("1 = Tropical Dreamwave")
+    print("2 = Berry Bliss")
+    print("3 = Peanut Butter Power")
+    print("4 = Strawbalicious Banana Blast")
+    print("5 = Protein-Packed Choco Cherry")
+    print("6 = Green Energy Boost")
+    print("7 = Mango Mix")
+    print("8 = Pomegranate Passion")
+    print("9 = Peaches and Cream")
+    print("10 = print(smoothies) Power Pop\n")
+
+    smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
+                 "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+                 "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
+                 "Peaches and Cream", "print(smoothies) Power Pop"]
+
+    # parse user input to use as an index number
+    smth_choice = int(input("Enter smoothie id number: "))
+
+    # condition checks that number is not <10
+    if 1 <= smth_choice <= len(smoothies):
+        smth_choice = smoothies[smth_choice - 1]
+        print(smth_choice + " added to order\n")
         return smth_choice
-        customer_order.smoothie.append(smth_choice)
-    
-    select_smoothie()
+    else:
+        print("Invalid smoothie number. Please try again.")
 
-    def select_size():
-        """
-        Prompts customer for the size smoothie
-        Appends choice to customer_order._size
-        """
-        print("What size would you like?")
-        print("--> type R for regular (500ml) €4")
-        print("--> type L for large (700ml) €5")
-
-        while True:
-            smth_size = input("Enter size: \n").upper()  # converts if lower
-
-            if smth_size == "R":
-                print("You chose regular")
-                customer_order._size.append("regular")
-                break
-            elif smth_size == "L":
-                print("You chose large")
-                customer_order._size.append("large")
-                break
-            else:
-                print("Please enter either 'R' or 'L'")
+    return smth_choice
+    customer_order.smoothie.append(smth_choice)
 
 
-    def select_yoghurt():
-        """
-        Prompts customer for the size smoothie
-        Appends choice to customer_order.yoghurt
-        """
-        print("Which yoghurt would you like?")
-        print("--> type D for dairy")
-        print("--> type S for soya")
+def select_size():
+    """
+    Prompts customer for the size smoothie
+    Appends choice to customer_order._size
+    """
+    print("What size would you like?")
+    print("--> type R for regular (500ml) €4")
+    print("--> type L for large (700ml) €5")
 
-        while True:
-            select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
+    while True:
+        smth_size = input("Enter size: \n").upper()  # converts if lower
 
-            if select_yoghurt == "D":
-                print("You chose dairy yoghurt")
-                customer_order.yoghurt.append("dairy")
-                break
-            elif select_yoghurt == "S":
-                print("You chose soya yoghurt")
-                customer_order.yoghurt.append("soya")
-                break
-            else:
-                print("Please enter either 'D' or 'S'")
-
-
-    def edit_order():
-        """
-        gives the customer the option to either
-        add to their order, remove item(s) or
-        go back to the review menu
-        """
-        print("Let's edit your order. Please select one of the following options:")
-        print("--> A to add another item")
-        print("--> R to add remove an item")
-        print("--> G to go back to checkout")
+        if smth_size == "R":
+            print("You chose regular")
+            customer_order._size.append("regular")
+            break
+        elif smth_size == "L":
+            print("You chose large")
+            customer_order._size.append("large")
+            break
+        else:
+            print("Please enter either 'R' or 'L'")
 
 
-    def review():
-        
+def select_yoghurt():
+    """
+    Prompts customer for the size smoothie
+    Appends choice to customer_order.yoghurt
+    """
+    print("Which yoghurt would you like?")
+    print("--> type D for dairy")
+    print("--> type S for soya")
+
+    while True:
+        select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
+
+        if select_yoghurt == "D":
+            print("You chose dairy yoghurt")
+            customer_order.yoghurt.append("dairy")
+            break
+        elif select_yoghurt == "S":
+            print("You chose soya yoghurt")
+            customer_order.yoghurt.append("soya")
+            break
+        else:
+            print("Please enter either 'D' or 'S'")
+
+
+def edit_order():
+    """
+    gives the customer the option to either
+    add to their order, remove item(s) or
+    go back to the review menu
+    """
+    print("Let's edit your order. Please select one of the following options:")
+    print("--> A to add another item")
+    print("--> R to add remove an item")
+    print("--> G to go back to checkout")
 
 
 # class Reoccuring(Order):
-    # adds further methods to a regular order
-    # def __init__(self, collection_day)
-    #     super().__init__(customer, smoothie, _size, yoghurt, price)
-    #     self.collection_day = collection_day
+# adds further methods to a regular order
+# def __init__(self, collection_day)
+#     super().__init__(customer, smoothie, _size, yoghurt, price)
+#     self.collection_day = collection_day
+
 
 def main_menu():
     """
@@ -235,6 +233,7 @@ def return_to_main_menu():
             print("Please enter either Y or N (previous entry not valid)")
 
 
+def review():
     """
     displays current order to customer
     gives option to edit the order
@@ -307,3 +306,5 @@ def end_reoccuring():
 
 main_menu()
 customer_order = Order()
+
+# get_name
