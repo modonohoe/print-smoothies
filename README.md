@@ -35,14 +35,15 @@ Happy coding!
 
 
 # **Print Smoothies**
+![Print smoothies logo](assets/images/banner.png "Print smoothies logo")
 
 ## **Site Overview**
 
-The entertaining classic game of chance available for all devices.
+Print(smoothies) is a fictional smoothie bar in Dublin's city centre.
+This program has been developed to allow customer's to preorder their items or set up a reoccuring order to collect every week.
+The program is linked via API to a Google Sheet which management can use to see data on the orders.
 
-Play against the computer - the first to score 10 points wins.
-
-![Am I Responsive Screenshot](assets/images/documentation/am-i-responsive.jpg "Am I Responsive Screenshot")
+![Am I Responsive Screenshot](assets/images "Am I Responsive Screenshot")
 
 ## **Table Of Contents**
 
@@ -55,11 +56,8 @@ Play against the computer - the first to score 10 points wins.
      - [User Stories](#user-stories)
      - [User Requirements](#user-requirements)
    - [Structure and Skeleton](#structure-and-skeleton)
-     - [Wireframes](#wireframes)
-   - [Current Features](#current-features)
+     - [Flow Chart](#flow-chart)
    - [Surface](#surface)
-     - [Color Scheme](#color-scheme)
-     - [Font](#font)
 4. [**Testing and Validation**](#testing-and-validation)
    - [Bugs](#bugs)
      - [Solved Bugs](#solved-bugs)
@@ -79,7 +77,7 @@ Play against the computer - the first to score 10 points wins.
 
 ### **Site Owner Goals**
 
-- To host a clean, responsive and engaging game and create a consistent and positive user experience across all devices.
+
 
 ### **How This Will Be Achieved**
 
@@ -96,97 +94,19 @@ Play against the computer - the first to score 10 points wins.
 
 As a user I would like:
 
-- Minimal text for instructions.
-- A clean and aesthetically pleasing interface, with game sounds and music.
-- A functioning game with consitent outcomes that is enjoyable with no delays or lagging.
-- To be able to see my score and have a target.
-- To have the option to play again easily.
+
 
 #### **User Requirements**
 
-| Requirements                         | Importance | Viability |
-| ------------------------------------ | :--------: | --------: |
-| Game rules                           |     5      |         5 |
-| Computer Challenger                  |     5      |         5 |
-| Human Challenger                     |     5      |         3 |
-| Score tally                          |     5      |         5 |
-| Interactive buttons for game choices |     5      |         5 |
-| Feedback comment after each round    |     4      |         5 |
-| Disable buttons when game ends       |     5      |         5 |
-| Restart button                       |     5      |         5 |
-| Music                                |     4      |         4 |
 
-For this iteration, all requirements with importance and viability score of 5 have been implemented.
-
-In the next version I would like to source some game music to add to the experience. Based on feedback from testers, the option to play against a friend/stranger emerged as important but not viable at present.
-
-Comments are not essential for functioning of the game (as the score bar updates and shows who is winning) but it is a nice form of feedback and engagement for the user.
-
-Initially the choice buttons displayed as text but feedback from testers suggested these be replaced with icons as they were more attractive. This has been implemented.
-
-Buttons before:
-
-![Text Buttons](assets/images/documentation/before-buttons.png "Text buttons")
-
-Buttons after:
-
-![Icon Buttons](assets/images/documentation/after-buttons.png)
 
 ### **Structure and Skeleton**
 
-#### **Wireframe**
+#### **Flow Chart**
 
-![Wireframe for Rock Paper Scissors](assets/images/wireframe-pc-and-mobile.jpg "Wireframe image")
-
-#### **Current Features**
-
-##### **1. Header**
-
-- Displays the game title 'Rock Paper Scissors', in large contrasted text.
-
-![Header](assets/images/documentation/header.jpg "Header")
-
-##### **2. Rules**
-
-- A reminder of the rules featuring some FontAwesome icons.
-
-![Game Rules](assets/images/documentation/rules.jpg "Game rules")
-
-##### **3. Game Area**
-
-- Here the player will interact with the buttons to make their choices. JavaScript will generate choices for the computer player.
-
-- The player update div will give live commentary on who is winning by test while the score updates below in purple font to make it stand out.
-
-- Communication is clear and consise to the player.
-
-![Game Area](assets/images/documentation/game-area.jpg "Game Area")
-
-##### **4. Game Over**
-
-- When the round is won - a new button appears with the option to resart the game.
-
-![End of Game](assets/images/documentation/end-game.jpg "End of Game")
-
-##### **5. Footer**
-
-- The footer is 'sticky', it gives a solid bottom to the page. A link to my GitHub page is there if the user wishes to visit the repository.
-
-![Footer](assets/images/documentation/footer.jpg "Page footer")
 
 ### **Surface**
 
-#### **Color Scheme**
-
-The basic CSS colors: 'thistle', 'indigo' and 'papaywhite' were used to compliment the colors of the 'Rock, Paper, Scissors' image (colors identified using [Adobe Color Image](https://color.adobe.com/create/image).)
-
-![Colors](assets/images/documentation/color-scheme.jpg "Color scheme")
-
-#### **Font**
-
-Both 'sans-serif' fonts, 'Chelsea Market' (for headings) and 'Belanosima''(for player updates) come from Google Fonts.
-
----
 
 ## **Testing and Validation**
 
@@ -201,40 +121,10 @@ Both 'sans-serif' fonts, 'Chelsea Market' (for headings) and 'Belanosima''(for p
 
 #### **Solved Bugs**
 
-- I had an issues with my JavaScript syntax which cause my array items not to show. The error was using curved parentheses instead of square ones and these were replaced.
-
-- When defining statements to hide the dashboard display and replace it with the restart button, the following code did not work:
-
-![Syntax Issue](assets/images/documentation/syntax-order.png "Syntax order issues")
-
-Only when the dashboard statement was defined **above** the restart statement was the display affected.
-
-- In the restartGame function, player and computer images needed to be re-sourced as without explicitly doing so resulted in the following error:
-
-![Restarting Issue](assets/images/documentation/restarting-image-issue.png "Restarting image issue")
-
-- At one stage, the computer could not score against player - I did not document this well enough but I think it was another paretheses issue. It has been resolved.
-
-![Computer can't Score](assets/images/documentation/no-computer-wins.png "Computer scoring issue")
-
-- The hover effects still appears when a button is disabled. I found this bad for UX and as the buttons were no longer needed after the game ends I chose to hide them instead.
-
-![Hover issue](assets/images/documentation/hover-appearing.png "Hover when buttons disabled")
-
-- For most devices, the game will fill the height of the screen. There are a couple of shorter devices - namely the Google Nest Hub - where the sticky footer became an issue and overlapped/hid the scores. This was resolved with a media query where the display was changed to 'relative' on such devices.
 
 #### **Validator testing**
 
-- HTML
 
-  - One error found - the script tag for the JavaScript file was outside of the body. It should always be at the end of the page for loading reasons but within the body element.
-
-  ![Script HTML issue](assets/images/documentation/script-error.jpg "HTML script error")
-
-  This has been addressed and no there are no HTML errors.
-
-- CSS
-  - No errors found
 
 #### **Unfixed bugs**
 
@@ -244,12 +134,7 @@ Only when the dashboard statement was defined **above** the restart statement wa
 
 ## **Deployment and Development**
 
-The site was deployed to GitHub pages using the following steps:
 
-1. In the GitHub repository, navigate to the Settings tab from the horizontal menu at the top of the page.
-2. Click the Settings tab and locate the Pages tab on the left menu which appears.
-3. Once you've selected your branch and root directory, click "Save" to deploy your website. GitHub will generate a URL (usually in the format username.github.io/repository-name).
-4. A message will be displayed to indicate a successful deployment to GitHub pages and provide the live link.
 
 The live link can be found here - [Rock Paper Scissors](https://modonohoe.github.io/rock-paper-scissors/)
 
