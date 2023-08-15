@@ -298,5 +298,5 @@ def main_menu():
         )
 
 
-Order() = customer_order()
+customer_order() = Order()
 main_menu()
