@@ -44,7 +44,7 @@ class Order:
         self.yoghurt = yoghurt
         self.price = price
 
-customer_order() = Order()
+customer_order = Order()
 
 
 def get_name():
