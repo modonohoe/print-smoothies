@@ -33,15 +33,21 @@ collection_time = current_time + timedelta(hours=1.5)
 # code modified from Love Sandwiches tutorial and influenced by TechWithTim
 
 
-
 class Order:
     """
     creates an instance of customer's smoothie order
     items are lists to allow multiple items
     """
+    def __init__(self, smoothie, _size, yoghurt, price):
+        self.smoothie = smoothie
+        self._size = size
+        self.yoghurt = yoghurt
+        self.price = price
+
+customer_order() = Order()
 
 
-def get_name(self):
+def get_name():
     """
     gets the customers name
     this will then be linked to their order
@@ -298,6 +304,4 @@ def main_menu():
             f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
 
-
-customer_order() = Order()
 main_menu()
