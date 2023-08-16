@@ -46,190 +46,197 @@ class Order:
     yoghurt: []
     price: []
 
-    def get_name(self):
-        """
-        gets the customers name
-        this will then be linked to their order
-        customer name must be 10 characters max and letters only
-        """
-        name = None
 
-        while True:
-            name = input("Whose name should we put on this order?\n")
+def get_name(self):
+    """
+    gets the customers name
+    this will then be linked to their order
+    customer name must be 10 characters max and letters only
+    """
+    name = None
 
-            if not name.isalpha() or len(name) < 10:
-                print("Please try again - ensure your name does not:")
-                print("exceed 10 characters or include any numbers")
-                continue
-            else:
-                break
-        print("Thank you " + name.capitalize() + "!")
+    while True:
+        name = input("Whose name should we put on this order?\n")
 
-        name = Order.customer
-        return Order.customer
+        if not name.isalpha() or len(name) < 10:
+            print("Please try again - ensure your name does not:")
+            print("exceed 10 characters or include any numbers")
+            continue
+        else:
+            break
+    print("Thank you " + name.capitalize() + "!")
 
-    def select_smoothie(self):
-        """
-        User enters the id number of their chosen smoothie
-        Number will choose corresponding index from list
-        The choice is then appended to the Order
-        """
-
-        print("MAKE YOUR CHOICE:\n")
-        print("1 = Tropical Dreamwave")
-        print("2 = Berry Bliss")
-        print("3 = Peanut Butter Power")
-        print("4 = Strawbalicious Banana Blast")
-        print("5 = Protein-Packed Choco Cherry")
-        print("6 = Green Energy Boost")
-        print("7 = Mango Mix")
-        print("8 = Pomegranate Passion")
-        print("9 = Peaches and Cream")
-        print("10 = print(smoothies) Power Pop\n")
-
-        smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
-                     "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-                     "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
-                     "Peaches and Cream", "print(smoothies) Power Pop"]
-
-        # parse user input to use as an index number
-        smth_choice = int(input("Enter smoothie id number: "))
-
-        while True:
-            smth_choice = smoothies[smth_choice - 1]
-        # condition checks that number is not <10
-            if 1 <= smth_choice <= len(smoothies):
-                print(smth_choice + " added to order\n")
-                Order.smoothie.append(smth_choice)
-                break
-            else:
-                print("Invalid smoothie number. Please try again.")       
-
-    def select_size(self):
-        """
-        Prompts customer for the size smoothie
-        Appends choice to Order._size
-        """
-        print("What size would you like?")
-        print("--> type R for regular (500ml) €4")
-        print("--> type L for large (700ml) €5")
-
-        while True:
-            smth_size = input("Enter size: \n").upper()  # converts if lower
-
-            if smth_size == "R":
-                print("You chose regular")
-                Order._size.append("regular")
-                break
-            elif smth_size == "L":
-                print("You chose large")
-                Order._size.append("large")
-                break
-            else:
-                print("Please enter either 'R' or 'L'")
-
-    def select_yoghurt(self):
-        """
-        Prompts customer for the size smoothie
-        Appends choice to rder.yoghurt
-        """
-        print("Which yoghurt would you like?")
-        print("--> type D for dairy")
-        print("--> type S for soya")
-
-        while True:
-            select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
-
-            if select_yoghurt == "D":
-                print("You chose dairy yoghurt")
-                Order.yoghurt.append("dairy")
-                break
-            elif select_yoghurt == "S":
-                print("You chose soya yoghurt")
-                Order.yoghurt.append("soya")
-                break
-            else:
-                print("Please enter either 'D' or 'S'")
-
-    def edit_order(self):
-        """
-        gives the customer the option to either
-        add to their order, remove item(s) or
-        go back to the review menu
-        """
-        print("Let's edit your order. Please select one of the following options:")
-        print("--> A to add another item")
-        print("--> R to add remove an item")
-        print("--> G to go back to checkout")
-
-    def review(self):
-        """
-        displays current order to customer
-        gives option to edit the order
-        or proceed and confirm the order
-        """
-        print("Your order: \n\n")
-        # call on ticket function from Order class??
-
-        print("Please enter Y to confirm, or N to edit your order 🙂")
-        print("(Note: Payment for your order upon collection)\n")
-
-        while True:
-            confirmation = input("Are you happy to proceed with this order?: ")
-
-            if confirmation in ("Y", "y"):
-                break
-
-            elif confirmation in ("N", "n"):
-                edit_order()
-                break
-            else:
-                print("Please enter either Y or N (previous entry not valid)")
-
-    def end_single(self):
-        """
-        Displays final confirmation message
-        for a 'one-off' single order
-        """
-        print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
-        print("Your order will be available for collection TODAY from:\n")
-        print("           " + current_time.strftime("%X") + "\n")
-        print("Thank you for ordering with print(smoothies)\n\n")
-
-        # adapted return_to_main_menu function
-        while True:
-            end_single = input("\nReturn to main menu? Y / N\n")
-            if end_single in ("Y", "y"):
-                main_menu()
-                break
-            elif end_single in ("N", "n"):
-                print("Have a great day 🙂")
-                break
-            else:
-                print("Please enter either Y or N (previous entry not valid)")
+    name = Order.customer
+    return Order.customer
 
 
-    def end_reoccuring(self):
-        """
-        Displays final confirmation message
-        for a reoccuring order
-        """
-        print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
-        print("Your order will be available ???????????????????:\n")
-        print("           " + current_time.strftime("%X") + "\n")
-        print("Thank you for ordering with print(smoothies)\n\n")
+def select_smoothie(self):
+    """
+    User enters the id number of their chosen smoothie
+    Number will choose corresponding index from list
+    The choice is then appended to the Order
+    """
 
-        # adapted return_to_main_menu function
-        while True:
-            end_single = input("\nReturn to main menu? Y / N\n")
-            if end_single in ("Y", "y"):
-                main_menu()
-                break
-            elif end_single in ("N", "n"):
-                print("Have a great day 🙂")
-                break
-            else:
-                print("Please enter either Y or N (previous entry not valid)")
+    print("MAKE YOUR CHOICE:\n")
+    print("1 = Tropical Dreamwave")
+    print("2 = Berry Bliss")
+    print("3 = Peanut Butter Power")
+    print("4 = Strawbalicious Banana Blast")
+    print("5 = Protein-Packed Choco Cherry")
+    print("6 = Green Energy Boost")
+    print("7 = Mango Mix")
+    print("8 = Pomegranate Passion")
+    print("9 = Peaches and Cream")
+    print("10 = print(smoothies) Power Pop\n")
+
+    smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
+                    "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+                    "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
+                    "Peaches and Cream", "print(smoothies) Power Pop"]
+
+    # parse user input to use as an index number
+    smth_choice = int(input("Enter smoothie id number: "))
+
+    while True:
+        smth_choice = smoothies[smth_choice - 1]
+    # condition checks that number is not <10
+        if 1 <= smth_choice <= len(smoothies):
+            print(smth_choice + " added to order\n")
+            Order.smoothie.append(smth_choice)
+            break
+        else:
+            print("Invalid smoothie number. Please try again.")       
+
+
+def select_size(self):
+    """
+    Prompts customer for the size smoothie
+    Appends choice to Order._size
+    """
+    print("What size would you like?")
+    print("--> type R for regular (500ml) €4")
+    print("--> type L for large (700ml) €5")
+
+    while True:
+        smth_size = input("Enter size: \n").upper()  # converts if lower
+
+        if smth_size == "R":
+            print("You chose regular")
+            Order._size.append("regular")
+            break
+        elif smth_size == "L":
+            print("You chose large")
+            Order._size.append("large")
+            break
+        else:
+            print("Please enter either 'R' or 'L'")
+
+
+def select_yoghurt(self):
+    """
+    Prompts customer for the size smoothie
+    Appends choice to rder.yoghurt
+    """
+    print("Which yoghurt would you like?")
+    print("--> type D for dairy")
+    print("--> type S for soya")
+
+    while True:
+        select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
+
+        if select_yoghurt == "D":
+            print("You chose dairy yoghurt")
+            Order.yoghurt.append("dairy")
+            break
+        elif select_yoghurt == "S":
+            print("You chose soya yoghurt")
+            Order.yoghurt.append("soya")
+            break
+        else:
+            print("Please enter either 'D' or 'S'")
+
+
+def edit_order(self):
+    """
+    gives the customer the option to either
+    add to their order, remove item(s) or
+    go back to the review menu
+    """
+    print("Let's edit your order. Please select one of the following options:")
+    print("--> A to add another item")
+    print("--> R to add remove an item")
+    print("--> G to go back to checkout")
+
+
+def review(self):
+    """
+    displays current order to customer
+    gives option to edit the order
+    or proceed and confirm the order
+    """
+    print("Your order: \n\n")
+    # call on ticket function from Order class??
+
+    print("Please enter Y to confirm, or N to edit your order 🙂")
+    print("(Note: Payment for your order upon collection)\n")
+
+    while True:
+        confirmation = input("Are you happy to proceed with this order?: ")
+
+        if confirmation in ("Y", "y"):
+            break
+
+        elif confirmation in ("N", "n"):
+            edit_order()
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
+
+
+def end_single(self):
+    """
+    Displays final confirmation message
+    for a 'one-off' single order
+    """
+    print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
+    print("Your order will be available for collection TODAY from:\n")
+    print("           " + current_time.strftime("%X") + "\n")
+    print("Thank you for ordering with print(smoothies)\n\n")
+
+    # adapted return_to_main_menu function
+    while True:
+        end_single = input("\nReturn to main menu? Y / N\n")
+        if end_single in ("Y", "y"):
+            main_menu()
+            break
+        elif end_single in ("N", "n"):
+            print("Have a great day 🙂")
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
+
+
+def end_reoccuring(self):
+    """
+    Displays final confirmation message
+    for a reoccuring order
+    """
+    print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
+    print("Your order will be available ???????????????????:\n")
+    print("           " + current_time.strftime("%X") + "\n")
+    print("Thank you for ordering with print(smoothies)\n\n")
+
+    # adapted return_to_main_menu function
+    while True:
+        end_single = input("\nReturn to main menu? Y / N\n")
+        if end_single in ("Y", "y"):
+            main_menu()
+            break
+        elif end_single in ("N", "n"):
+            print("Have a great day 🙂")
+            break
+        else:
+            print("Please enter either Y or N (previous entry not valid)")
 
 
 # class Reoccuring(Order):
