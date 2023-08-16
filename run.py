@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from datetime import datetime, timedelta
-from dataclasses import dataclass
 
 # The scope lists the APIs the program should access in order to run
 SCOPE = [
@@ -34,17 +33,12 @@ collection_time = current_time + timedelta(hours=1.5)
 # code modified from Love Sandwiches tutorial and influenced by TechWithTim
 
 
-@dataclass
+
 class Order:
     """
     creates an instance of customer's smoothie order
     items are lists to allow multiple items
     """
-    customer: str
-    smoothie: []
-    _size: []
-    yoghurt: []
-    price: []
 
 
 def get_name(self):
