@@ -7,8 +7,6 @@ Print(smoothies) is a fictional smoothie bar in Dublin's city centre.
 This program has been developed to allow customer's to preorder their items or set up a reoccuring order to collect every week.
 The program is linked via API to a Google Sheet which management can use to see data on the orders.
 
-![Am I Responsive Screenshot](assets/images "Am I Responsive Screenshot")
-
 ## **Table Of Contents**
 
 1. [**Site Overview**](#site-overview)
@@ -41,12 +39,17 @@ The program is linked via API to a Google Sheet which management can use to see 
 
 ### **Site Owner Goals**
 
+Print(smoothies) is a popular smoothie bar that gets a lot of regular customers in the Dublin city area. Their customers have requested an ordering program so that they can book their smoothies ahead of time and collect them within the hour. 
+The site owner would like to provide this facility to their customers. They would also like to be able to edit their menu and display it via the program.
 
 
 ### **How This Will Be Achieved**
 
-- The site will be one page with clear instructions and feedback given to the user at all times (e.g. when hovering the mouse, on clicking, results for each round etc)
-- Dimensions for an extensive list of screen sizes will be tested.
+- The site owner would like to be able to change the menu on the program and also see the orders which is why the program will be linked to a Google Sheet via API.
+
+- A flowchart will identify the steps needed to make the program and necessary functions to include.
+
+- The program will be designed with the user in mind. Customers sometimes make errors in the ordering process, they will want the program to be intuitive and for it to give feedback often. The program should be intuitive to navigate.
 
 ---
 
@@ -57,17 +60,34 @@ The program is linked via API to a Google Sheet which management can use to see 
 #### **User Stories**
 
 As a user I would like:
-
-
+- to be able to preorder my smoothie through the terminal
+- to personalise my order (drink's size, type of base, name of order etc)
+- to get feedback throughout the ordering process
+- to be given a time for collection
+- to have a enjoyable experience with the program
 
 #### **User Requirements**
 
+| Requirements                         | Importance | Viability |
+| ------------------------------------ | :--------: | --------: |
+| Give name for order                  |     5      |         5 |
+| See menu items                       |     5      |         5 |
+| Choose size of drink and base milk   |     5      |         5 |
+| Feedback at every step of process    |     5      |         5 |
+| Collection time                      |     5      |         5 |
+| Option to add more than one drink    |     4      |         4 |
+| Option to edit orders of 2+ drinks   |     4      |         4 |
+| Option to set up a reoccuring order  |     5      |         4 |
+
+All requirements with an importance and viability of 5 have been included in the curret program.
+As print(smoothies) does have a lot of regular customers, the option to set up a reoccuring order will be the next feature to implement before the requirement to add more than one drink to an order.
 
 
 ### **Structure and Skeleton**
 
 #### **Flow Chart**
 
+This flowchart shows the 
 
 ### **Surface**
 
