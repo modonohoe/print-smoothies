@@ -4,7 +4,7 @@
 ## **Site Overview**
 
 Print(smoothies) is a fictional smoothie bar in Dublin's city centre.
-This program has been developed to allow customer's to preorder their items or set up a reoccuring order to collect every week.
+This program has been developed to allow customer's to preorder their smoothie for collection.
 The program is linked via API to a Google Sheet which management can use to see data on the orders.
 
 ## **Table Of Contents**
