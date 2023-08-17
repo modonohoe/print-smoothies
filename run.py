@@ -165,18 +165,6 @@ def select_yoghurt(cust_order):
             print("Please enter either 'D' or 'S'")
 
 
-# def edit_order():
-#   """
-# gives the customer the option to either
-# add to their order, remove item(s) or
-# go back to the review menu
-#    """
-#   print("Let's edit your order. Please select one of the following options:")
-#  print("--> A to add another item")
-# print("--> R to add remove an item")
-# print("--> G to go back to checkout")
-
-
 def review(cust_order):
     """
     displays current order to customer
@@ -205,29 +193,6 @@ def review(cust_order):
             print("Please enter either Y or N (previous entry not valid)")
 
 
-def end_single():
-    """
-    Displays final confirmation message
-    for a 'one-off' single order
-    """
-    print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
-    print("Your order will be available for collection TODAY from:\n")
-    print("           " + collection_time.strftime("%X") + "\n")
-    print("Thank you for ordering with print(smoothies)\n\n")
-
-    # adapted return_to_main_menu function
-    while True:
-        end_single = input("\nReturn to main menu? Y / N\n")
-        if end_single in ("Y", "y"):
-            main_menu()
-            break
-        elif end_single in ("N", "n"):
-            print("Have a great day 🙂")
-            break
-        else:
-            print("Please enter either Y or N (previous entry not valid)")
-
-
 def end_reoccuring(self):
     """
     Displays final confirmation message
@@ -249,13 +214,6 @@ def end_reoccuring(self):
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
-
-
-# class Reoccuring(Order):
-# adds further methods to a regular order
-# def __init__(self, collection_day)
-#     super().__init__(customer, smoothie, _size, yoghurt, price)
-#     self.collection_day = collection_day
 
 
 def return_to_main_menu():
@@ -309,11 +267,9 @@ def main_menu():
         display_menu()
     elif menu_action == "2":
         get_name(cust_order)
-    elif menu_action == "3":
-        print("Let's set up order")
     else:
         raise ValueError(
-            f"Please enter either 1, 2 or 3 (previous entry not valid)"
+            f"Please enter either 1 or 2 (previous entry not valid)"
         )
 
 
