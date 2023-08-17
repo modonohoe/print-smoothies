@@ -122,19 +122,15 @@ def select_size(cust_order):
         if cust_order._size == "R":
             print("You chose regular \n")
             cust_order._size = "regular"
+            cust_order.price = 4
             break
         elif cust_order._size == "L":
             print("You chose large \n")
             cust_order._size = "large"
+            cust_order.price = 5
             break
         else:
             print("Please enter either 'R' or 'L'")
-
-
-if cust_order._size == "regular":
-    cust_order.price = 4
-else:
-    cust_order.price = 5
 
 
 def select_yoghurt(cust_order):
@@ -195,14 +191,15 @@ def update_orders(cust_order):
     # This function will save the order details to the Google Sheet
     print("Logging your order to the system...")
     orders_worksheet = SHEET.worksheet("orders")
-    
+   
     # data list to append
     order_data = [
         cust_order.name,
         cust_order.smoothie,
         cust_order._size,
         cust_order.yoghurt,
-        cust_order.price
+        cust_order.price,
+        collection_time.strftime("%X")
     ]
 
     orders_worksheet.append_row(order_data)
