@@ -96,7 +96,7 @@ def select_smoothie(cust_order):
         try:
             cust_order.smoothie = int(input("Enter smoothie id number: \n"))
             # parse user input to use as an index number
-      
+
             # condition checks that number is not <10
             if 1 <= cust_order.smoothie <= len(smoothies):
                 cust_order.smoothie = smoothies[cust_order.smoothie - 1]
@@ -290,4 +290,3 @@ def main():
 
 
 main()
-
