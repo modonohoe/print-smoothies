@@ -160,9 +160,7 @@ This was resolved by calling the proceeding functions for the order again direct
 
 ## **Deployment and Development**
 
-
-
-The live link can be found here - [Rock Paper Scissors](https://modonohoe.github.io/rock-paper-scissors/)
+The live link can be found here - [print smoothies link](https://print-smoothies-86336ab6a539.herokuapp.com/)
 
 ---
 
