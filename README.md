@@ -68,8 +68,7 @@ As a user I would like:
 #### **User Requirements**
 
 | Requirements                         | Importance | Viability |
-| ------------------------------------ | :-
--------: | --------: |
+| ------------------------------------ | :--------: | --------: |
 | Give name for order                  |     5      |         5 |
 | See menu items                       |     5      |         5 |
 | Choose size of drink and base milk   |     5      |         5 |
