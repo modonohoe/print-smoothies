@@ -118,7 +118,6 @@ def select_size(cust_order):
 
     while True:
         cust_order._size = input("Enter size: \n").upper()  # converts if lower
-
         if cust_order._size == "R":
             print("You chose regular \n")
             cust_order._size = "regular"
@@ -147,7 +146,6 @@ def select_yoghurt(cust_order):
     while True:
         cust_order.yoghurt = input("Enter choice: \n").upper()
         # converts if lower case
-
         if cust_order.yoghurt == "D":
             print("You chose dairy yoghurt 🥛 \n")
             cust_order.yoghurt = "dairy"
@@ -177,11 +175,10 @@ def review(cust_order):
 
     while True:
         confirmation = input("Are you happy with this order? (Y / N): \n")
-
         if confirmation in ("Y", "y"):
             break
         elif confirmation in ("N", "n"):
-            get_name(cust_order)
+            main()
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
@@ -191,7 +188,7 @@ def update_orders(cust_order):
     # This function will save the order details to the Google Sheet
     print("Logging your order to the system...")
     orders_worksheet = SHEET.worksheet("orders")
- 
+
     # data list to append
     order_data = [
         cust_order.name,
@@ -263,22 +260,25 @@ def main_menu():
     print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
     print(" 1 = view current menu \n 2 = place order for collection \n")
 
-    menu_action = input("Your Choice: \n")
-
-    if menu_action == "1":
-        display_menu()
-    elif menu_action == "2":
-        get_name(cust_order)
-    else:
-        raise ValueError(
-            f"Please enter either 1, 2 or 3 (previous entry not valid)"
-        )
+    while True:
+        menu_action = input("Your Choice: \n")
+        if menu_action == "1":
+            display_menu()
+        elif menu_action == "2":
+            get_name(cust_order)
+        else:
+            print("Please enter either 1 or 2 (previous entry not valid)")
 
 
-main_menu()
-select_smoothie(cust_order)
-select_size(cust_order)
-select_yoghurt(cust_order)
-review(cust_order)
-update_orders(cust_order)
-end_single()
+def main():
+    main_menu()
+    select_smoothie(cust_order)
+    select_size(cust_order)
+    select_yoghurt(cust_order)
+    review(cust_order)
+    update_orders(cust_order)
+    end_single()
+
+
+main()
+
