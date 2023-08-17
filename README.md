@@ -160,6 +160,18 @@ This was resolved by calling the proceeding functions for the order again direct
 
 ## **Deployment and Development**
 
+This project was deployed using Heroku. The repository is stored on GitHub.
+
+- Generate requirements for the requirements.txt file.
+- Set up Heroku account.
+- Click on 'Add app'
+- In the setting tab, Config Vars need to be added (namely the CREDS to link to Google Sheets by coping and pasting from the creds.json file and PORT 8000)
+- Then, the Python and NodeJS buildpacks were added - in that order.
+- From the Deploy tab, connect Heroku with your GitHub account.
+- Then search for the relevant repository and build from Main branch (and enable automatic updates)
+- Heroku will then generate your App.
+- Code Institute student pack credits Heroku accounts with $100+ meaning you can avail of the Eco Dynos neccessary to host the site as it no longer offers 5 free apps to members.
+
 The live link can be found here - [print smoothies link](https://print-smoothies-86336ab6a539.herokuapp.com/)
 
 ---
@@ -168,27 +180,22 @@ The live link can be found here - [print smoothies link](https://print-smoothies
 
 ### **Technologies Used**
 
-- [Balsamiq](https://balsamiq.com/) to create the wireframes.
+- [Python](https://docs.python.org/3/)
 - [Codeanywhere](https://codeanywhere.com/) IDE for editing the site.
-- [Github](https://github.com/) to host the repository and deploy the site.
-- [Google Dev Tools](https://developer.chrome.com/docs/devtools/) to troubleshoot and test ideas
-- [Am I Responsive?](https://ui.dev/amiresponsive) to generate an image showing responsivness of the site across multiple devices.
+- [Github](https://github.com/) to store the repository.
+- [Heroku](https://dashboard.heroku.com/apps) to deploy and host the App.
 
-### **Media**
-
-- [Vecteezy.com](https://www.vecteezy.com/free-vector/rock-paper-scissors) the The image for the rock, paper and scissors.
-- [Google Fonts](https://fonts.google.com/) to source and import all fonts.
-- [Font Awesome](https://fontawesome.com/) for the icons in the rules section and GitHub icon in footer.
-- [Favicon](https://favicon.io/) where the site's favicon was sourced.
 
 ### **Code**
 
-- Two JavaScript functions were adopted from the 'Rock, Paper, Scissors' walkthrough by Matt Rudge via Code Institute.
+- [w3schools](https://www.w3schools.com/python/python_classes.asp) helped me grasp with difficult concepts such as classes
 
-- I found this article helpful regarding font-sizing and rem [Why I change the font size to 62.5%](https://javascript.plainenglish.io/why-i-change-the-font-size-to-62-5-in-every-project-45c5ff785fb5)
+- I reviewed [rkillickdev](https://github.com/rkillickdev/the-coffee-run)'s repository (I did not adapt/adopt any of their code directly).
+
+- Code Institute's tutors Sarah, Martin and Sean helped me to tweak my functions - namely the use of While loops and identifying issues with declaring classes.
 
 ### **Acknowledgements**
 
-- Thank you to Code Institute - the content creators, my mentor, the tutors and the Slack community who all contributed to my understanding of JavaScript fundamentals during this project.
+- Thank you to Code Institute -  my mentor Can, the tutors and the Slack community who all contributed to my understanding of Python fundamentals during this project.
 
 [Return to top](#table-of-contents)
