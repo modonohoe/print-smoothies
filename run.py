@@ -177,7 +177,7 @@ def review(cust_order):
     print("Details: " + f"{cust_order._size}, {cust_order.yoghurt}")
     print("Price: €" + f" {cust_order.price}")
 
-    print("Please enter Y to confirm, or N to edit your order 🙂")
+    print("Please enter Y to confirm, or N to redo your order 🙂")
     print("(Note: Payment for your order upon collection)\n")
 
     while True:
@@ -185,9 +185,8 @@ def review(cust_order):
 
         if confirmation in ("Y", "y"):
             break
-
         elif confirmation in ("N", "n"):
-            # edit_order()
+            main_menu()
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
