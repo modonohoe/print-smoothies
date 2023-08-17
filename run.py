@@ -117,8 +117,8 @@ def select_size(cust_order):
     Appends choice to Order._size
     """
     print("What size would you like?")
-    print("--> type R for regular (500ml) €4")
-    print("--> type L for large (700ml) €5")
+    print("--> enter 'R' for regular (500ml) €4")
+    print("--> enter 'L' for large (700ml) €5")
     cust_order._size = None
 
     while True:
@@ -143,8 +143,8 @@ def select_yoghurt(cust_order):
     Appends choice to rder.yoghurt
     """
     print("Which yoghurt would you like?")
-    print("--> type D for dairy")
-    print("--> type S for soya")
+    print("--> enter 'D' for dairy")
+    print("--> enter 'S' for soya")
 
     cust_order.yoghurt = None
 
@@ -264,7 +264,7 @@ def main_menu():
     print("Drop in to order one of our speciality smoothies")
     print("or order for collection through this terminal!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
-    print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
+    print("Please enter one of the following (1 or 2) then PRESS ENTER:")
     print(" 1 = view current menu \n 2 = place order for collection \n")
 
     while True:
