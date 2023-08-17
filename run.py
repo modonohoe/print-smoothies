@@ -38,39 +38,38 @@ class Order:
     creates an instance of customer's smoothie order
     items are lists to allow multiple items
     """
-    def __init__(self, smoothie, _size, yoghurt, price):
+    def __init__(self, name, smoothie, _size, yoghurt, price):
+        self.name = name
         self.smoothie = smoothie
-        self._size = size
+        self._size = _size
         self.yoghurt = yoghurt
         self.price = price
 
-customer_order = Order()
+
+cust_order = Order("Damien", "Berry Blast", "Large", "Soya", 5)
 
 
-def get_name():
+def get_name(cust_order):
     """
     gets the customers name
     this will then be linked to their order
     customer name must be 10 characters max and letters only
     """
-    name = None
+    cust_order.name = None
 
     while True:
-        name = input("Whose name should we put on this order?\n")
-
-        if not name.isalpha() or len(name) < 10:
+        cust_order.name = input("Whose name should we put on this order?\n")
+        if not cust_order.name.isalpha() or not len(cust_order.name) < 10:
             print("Please try again - ensure your name does not:")
             print("exceed 10 characters or include any numbers")
             continue
         else:
             break
-    print("Thank you " + name.capitalize() + "!")
-
-    name = Order.customer
-    return Order.customer
+    print("Thank you " + cust_order.name.capitalize() + "!")
+    return cust_order.name
 
 
-def select_smoothie(self):
+def select_smoothie(cust_order):
     """
     User enters the id number of their chosen smoothie
     Number will choose corresponding index from list
@@ -90,25 +89,25 @@ def select_smoothie(self):
     print("10 = print(smoothies) Power Pop\n")
 
     smoothies = ["Tropical Dreamwave", "Berry Bliss", "Peanut Butter Power",
-                    "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
-                    "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
-                    "Peaches and Cream", "print(smoothies) Power Pop"]
+                 "Strawbalicious Banana Blast", "Protein-Packed Choco Cherry",
+                 "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
+                 "Peaches and Cream", "print(smoothies) Power Pop"]
 
+    cust_order.smoothie = int(input("Enter smoothie id number: "))
     # parse user input to use as an index number
-    smth_choice = int(input("Enter smoothie id number: "))
 
     while True:
-        smth_choice = smoothies[smth_choice - 1]
-    # condition checks that number is not <10
-        if 1 <= smth_choice <= len(smoothies):
-            print(smth_choice + " added to order\n")
-            Order.smoothie.append(smth_choice)
+        # condition checks that number is not <10
+        if 1 <= cust_order.smoothie <= len(smoothies):
+            cust_order.smoothie = smoothies[cust_order.smoothie - 1]
+            print(cust_order.smoothie + " added to order ✨\n")
             break
         else:
-            print("Invalid smoothie number. Please try again.")       
+            print("Invalid smoothie number. Please try again.")
+    return cust_order.smoothie
 
 
-def select_size(self):
+def select_size(cust_order):
     """
     Prompts customer for the size smoothie
     Appends choice to Order._size
@@ -116,23 +115,30 @@ def select_size(self):
     print("What size would you like?")
     print("--> type R for regular (500ml) €4")
     print("--> type L for large (700ml) €5")
+    cust_order._size = None
 
     while True:
-        smth_size = input("Enter size: \n").upper()  # converts if lower
+        cust_order._size = input("Enter size: \n").upper()  # converts if lower
 
-        if smth_size == "R":
-            print("You chose regular")
-            Order._size.append("regular")
+        if cust_order._size == "R":
+            print("You chose regular \n")
+            cust_order._size = "regular"
             break
-        elif smth_size == "L":
-            print("You chose large")
-            Order._size.append("large")
+        elif cust_order._size == "L":
+            print("You chose large \n")
+            cust_order._size = "large"
             break
         else:
             print("Please enter either 'R' or 'L'")
 
 
-def select_yoghurt(self):
+if cust_order._size == "regular":
+    cust_order.price = 4
+else:
+    cust_order.price = 5
+
+
+def select_yoghurt(cust_order):
     """
     Prompts customer for the size smoothie
     Appends choice to rder.yoghurt
@@ -141,41 +147,47 @@ def select_yoghurt(self):
     print("--> type D for dairy")
     print("--> type S for soya")
 
-    while True:
-        select_yoghurt = input("Enter choice: \n").upper()  # converts if lower
+    cust_order.yoghurt = None
 
-        if select_yoghurt == "D":
-            print("You chose dairy yoghurt")
-            Order.yoghurt.append("dairy")
+    while True:
+        cust_order.yoghurt = input("Enter choice: \n").upper()
+        # converts if lower case
+
+        if cust_order.yoghurt == "D":
+            print("You chose dairy yoghurt 🥛 \n")
+            cust_order.yoghurt = "dairy"
             break
-        elif select_yoghurt == "S":
-            print("You chose soya yoghurt")
-            Order.yoghurt.append("soya")
+        elif cust_order.yoghurt == "S":
+            print("You chose soya yoghurt 🥛 \n")
+            cust_order.yoghurt = "soya"
             break
         else:
             print("Please enter either 'D' or 'S'")
 
 
-def edit_order(self):
-    """
-    gives the customer the option to either
-    add to their order, remove item(s) or
-    go back to the review menu
-    """
-    print("Let's edit your order. Please select one of the following options:")
-    print("--> A to add another item")
-    print("--> R to add remove an item")
-    print("--> G to go back to checkout")
+# def edit_order():
+#   """
+# gives the customer the option to either
+# add to their order, remove item(s) or
+# go back to the review menu
+#    """
+#   print("Let's edit your order. Please select one of the following options:")
+#  print("--> A to add another item")
+# print("--> R to add remove an item")
+# print("--> G to go back to checkout")
 
 
-def review(self):
+def review(cust_order):
     """
     displays current order to customer
     gives option to edit the order
     or proceed and confirm the order
     """
-    print("Your order: \n\n")
-    # call on ticket function from Order class??
+    print("--- ORDER REVIEW ---\n\nYour order:")
+    print("Name: " + f" {cust_order.name}")
+    print("Smoothie: " + f"{cust_order.smoothie}")
+    print("Details: " + f"{cust_order._size}, {cust_order.yoghurt}")
+    print("Price:" + f" {cust_order.price}")
 
     print("Please enter Y to confirm, or N to edit your order 🙂")
     print("(Note: Payment for your order upon collection)\n")
@@ -187,13 +199,13 @@ def review(self):
             break
 
         elif confirmation in ("N", "n"):
-            edit_order()
+            # edit_order()
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
 
 
-def end_single(self):
+def end_single():
     """
     Displays final confirmation message
     for a 'one-off' single order
@@ -250,14 +262,14 @@ def return_to_main_menu():
     """
     gives option to return to Main Menu
     """
+    print("\n\nReturn to main Menu or begin order:")
     while True:
-        return_to_main_menu = input("\nReturn to main menu? Y / N\n")
+        return_to_main_menu = input("Return to main menu? Y / N\n")
         if return_to_main_menu in ("Y", "y"):
             main_menu()
             break
-        # option to order CALL ORDER FUNCTION
         elif return_to_main_menu in ("N", "n"):
-            print("okay")
+            get_name(cust_order)
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
@@ -285,7 +297,7 @@ def main_menu():
     print("\n\nWelcome to print(smoothies)!\n")
     print("Dublin's famous on-the-go smoothie bar 🍹 \n")
     print("We are open from Monday to Friday 7am-4pm\n")
-    print("Drop in to order one of our speciality smoothies\n")
+    print("Drop in to order one of our speciality smoothies")
     print("or order for collection through this terminal!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
     print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
@@ -296,7 +308,7 @@ def main_menu():
     if menu_action == "1":
         display_menu()
     elif menu_action == "2":
-        get_name()
+        get_name(cust_order)
     elif menu_action == "3":
         print("Let's set up order")
     else:
@@ -304,4 +316,10 @@ def main_menu():
             f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
 
+
 main_menu()
+select_smoothie(cust_order)
+select_size(cust_order)
+select_yoghurt(cust_order)
+review(cust_order)
+end_single()
