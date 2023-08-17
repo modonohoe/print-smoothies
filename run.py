@@ -187,7 +187,7 @@ def review(cust_order):
     print("Name: " + f" {cust_order.name}")
     print("Smoothie: " + f"{cust_order.smoothie}")
     print("Details: " + f"{cust_order._size}, {cust_order.yoghurt}")
-    print("Price:" + f" {cust_order.price}")
+    print("Price: €" + f" {cust_order.price}")
 
     print("Please enter Y to confirm, or N to edit your order 🙂")
     print("(Note: Payment for your order upon collection)\n")
@@ -212,7 +212,7 @@ def end_single():
     """
     print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
     print("Your order will be available for collection TODAY from:\n")
-    print("           " + current_time.strftime("%X") + "\n")
+    print("           " + collection_time.strftime("%X") + "\n")
     print("Thank you for ordering with print(smoothies)\n\n")
 
     # adapted return_to_main_menu function
@@ -235,7 +235,7 @@ def end_reoccuring(self):
     """
     print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
     print("Your order will be available ???????????????????:\n")
-    print("           " + current_time.strftime("%X") + "\n")
+    print("           " + collection_time.strftime("%X") + "\n")
     print("Thank you for ordering with print(smoothies)\n\n")
 
     # adapted return_to_main_menu function
