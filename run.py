@@ -101,8 +101,13 @@ def select_smoothie(cust_order):
             cust_order.smoothie = smoothies[cust_order.smoothie - 1]
             print(cust_order.smoothie + " added to order ✨\n")
             break
+        elif cust_order.smoothie.isalpha():
+            print("Please enter the ID number, not name. Try again: ")
+        elif is not 1 <= cust_order.smoothie <= len(smoothies):
+            print("Invalid smoothie number. Please try again.")
         else:
             print("Invalid smoothie number. Please try again.")
+
     return cust_order.smoothie
 
 
@@ -264,8 +269,10 @@ def main_menu():
         menu_action = input("Your Choice: \n")
         if menu_action == "1":
             display_menu()
+            break
         elif menu_action == "2":
             get_name(cust_order)
+            break
         else:
             print("Please enter either 1 or 2 (previous entry not valid)")
 
