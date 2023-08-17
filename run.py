@@ -92,7 +92,7 @@ def select_smoothie(cust_order):
                  "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
                  "Peaches and Cream", "print(smoothies) Power Pop"]
 
-    cust_order.smoothie = int(input("Enter smoothie id number: "))
+    cust_order.smoothie = int(input("Enter smoothie id number: \n"))
     # parse user input to use as an index number
 
     while True:
@@ -176,7 +176,7 @@ def review(cust_order):
     print("(Note: Payment for your order upon collection)\n")
 
     while True:
-        confirmation = input("Are you happy with this order? (Y / N): ")
+        confirmation = input("Are you happy with this order? (Y / N): \n")
 
         if confirmation in ("Y", "y"):
             break
@@ -191,7 +191,7 @@ def update_orders(cust_order):
     # This function will save the order details to the Google Sheet
     print("Logging your order to the system...")
     orders_worksheet = SHEET.worksheet("orders")
-   
+ 
     # data list to append
     order_data = [
         cust_order.name,
@@ -263,7 +263,7 @@ def main_menu():
     print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
     print(" 1 = view current menu \n 2 = place order for collection \n")
 
-    menu_action = input("Your Choice: ")
+    menu_action = input("Your Choice: \n")
 
     if menu_action == "1":
         display_menu()
