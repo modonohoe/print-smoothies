@@ -48,7 +48,7 @@ The site owner would like to provide this facility to their customers. They woul
 
 - A flowchart will identify the steps needed to make the program and necessary functions to include.
 
-- The program will be designed with the user in mind. Customers sometimes make errors in the ordering process, they will want the program to be intuitive and for it to give feedback often. The program should be intuitive to navigate.
+- The program will be designed with the user in mind. Customers sometimes make errors in the ordering process, they will want the program to be intuitive to navigate and for it to give feedback often. 
 
 ---
 
@@ -103,7 +103,7 @@ This flowchart made with Lucidchart helped me to identify the necessary steps fo
 No other issues with the program were detected in the browser testing.
 
 - The game has been tested on multiple mobile devices in person and via all the available devices on Dev Tools toolbar.
-This program does not work well on iPhone (particularly as there is no 'enter' button only a 'return' which two of my friends who tested the program said would not let them input anything). This issue appears to only apply to iPhone and not Apple iOs in general as the program runs well on Mac (excep as seen below where the name 'Theresa', when entered on a Mac computer, caused a once-off bug.)
+This program does not work well on iPhone (particularly as there is no 'enter' button only a 'return' which two of my friends who tested the program said would not let them input anything). This issue appears to only apply to iPhone and not Apple iOs in general as the program runs well on Mac (except as seen below where the name 'Theresa', when entered on a Mac computer, caused a once-off bug.)
 
 ![Mac one-off bug](assets/documentation/theresa-bug.png)
 
@@ -116,7 +116,7 @@ This program does not work well on iPhone (particularly as there is no 'enter' b
 
 #### **Solved Bugs**
 
-- My original get_name() function accepted numbers for the customer name. Researching and implemeting the 'isaplpha' string method resolved this.
+- My original get_name() function accepted numbers for the customer name. Researching and implemeting the 'isalpha' string method resolved this.
 
 - The return_to_main_menu() function, orignially accepted any character for Y or N. 
 
@@ -179,6 +179,7 @@ The live link can be found here - [print smoothies link](https://print-smoothies
 ### **Technologies Used**
 
 - [Python](https://docs.python.org/3/)
+- [LucidChart](https://lucid.app/) to design my flowchart.
 - [Codeanywhere](https://codeanywhere.com/) IDE for editing the site.
 - [Github](https://github.com/) to store the repository.
 - [Heroku](https://dashboard.heroku.com/apps) to deploy and host the App.
