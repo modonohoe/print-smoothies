@@ -69,7 +69,8 @@ As a user I would like:
 #### **User Requirements**
 
 | Requirements                         | Importance | Viability |
-| ------------------------------------ | :--------: | --------: |
+| ------------------------------------ | :-
+-------: | --------: |
 | Give name for order                  |     5      |         5 |
 | See menu items                       |     5      |         5 |
 | Choose size of drink and base milk   |     5      |         5 |
@@ -87,7 +88,9 @@ As print(smoothies) does have a lot of regular customers, the option to set up a
 
 #### **Flow Chart**
 
-This flowchart shows the 
+This flowchart made with Lucidchart helped me to identify the necessary steps for my program.
+
+![LucidChart flowchart](assets/documentation/flowchart.png)
 
 ### **Surface**
 
@@ -105,6 +108,33 @@ This flowchart shows the
 
 #### **Solved Bugs**
 
+- My original get_name() function accepted numbers for the customer name. Researching and implemeting the 'isaplpha' string method resolved this.
+
+- The return_to_main_menu() function, orignially accepted any character for Y or N. 
+
+![Incorrect syntax for return to main](assets/documentation/return-to-main.png)
+
+Implementing a 'while' loop solved this.
+
+- I forgot to include a break in my get_name() loop which caused the following bug:
+
+![Repeating loop](assets/documentation/forgot-break-in-loop.png)
+
+- When a letter was entered instead of a number for the smoothie choice, the following error appeared:
+
+![Letter error](assets/documentation/smoothie-number-issue.png)
+
+This was resolved by using a try and except statement which now prompts the user again and declares a ValueError.
+
+- When orders were edited, a duplicate order was saved to the Google Sheet.
+
+![Duplicate orders upon editing](assets/documentation/duplicate-issue-solved.png)
+
+This was resolved by calling the proceeding functions for the order again directly in the while loop review()
+
+- The program was charging 5euro for all smoothies regardless of size when I defined the price condition outside of the _size function. For this iteration I have defined the prices within the size function but for future iterations this code may need to be revised as prices will need to be added together for multiple orders.
+
+![Price issue](assets/documentation/price-fixed.png)
 
 #### **Validator testing**
 
