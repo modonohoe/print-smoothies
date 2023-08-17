@@ -28,9 +28,8 @@ The program is linked via API to a Google Sheet which management can use to see 
 5. [**Deployment and Development**](#deployment-and-development)
 6. [**Credits**](#credits)
    - [Technologies Used](#technologies-used)
-   - [Media](#media)
-   - [Content](#content)
    - [Code](#code)
+   - [Content](#content)
    - [Acknowledgements](#acknowledgements)
 
 ---
@@ -194,8 +193,12 @@ The live link can be found here - [print smoothies link](https://print-smoothies
 
 - Code Institute's tutors Sarah, Martin and Sean helped me to tweak my functions - namely the use of While loops and identifying issues with declaring classes.
 
+### **Content**
+
+Print(smoothies) and associated products are fictional and created by me for this project.
+
 ### **Acknowledgements**
 
-- Thank you to Code Institute -  my mentor Can, the tutors and the Slack community who all contributed to my understanding of Python fundamentals during this project.
+- Thank you to Code Institute: my mentor Can, the tutors and the Slack community who all contributed to my understanding of Python fundamentals during this project.
 
 [Return to top](#table-of-contents)
