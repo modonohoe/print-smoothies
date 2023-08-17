@@ -22,7 +22,6 @@ menu = SHEET.worksheet('menu')
 current_menu = menu.get_all_values()
 
 orders = SHEET.worksheet('orders')
-regulars = SHEET.worksheet('regulars')
 
 
 # based on w3schools article and geeksforgeeks.or for .timedelta
@@ -172,24 +171,40 @@ def review(cust_order):
     or proceed and confirm the order
     """
     print("--- ORDER REVIEW ---\n\nYour order:")
-    print("Name: " + f" {cust_order.name}")
+    print("Name: " + f"{cust_order.name}")
     print("Smoothie: " + f"{cust_order.smoothie}")
     print("Details: " + f"{cust_order._size}, {cust_order.yoghurt}")
-    print("Price: €" + f" {cust_order.price}")
+    print("Price: €" + f" {cust_order.price}" + "\n")
 
     print("Please enter Y to confirm, or N to redo your order 🙂")
     print("(Note: Payment for your order upon collection)\n")
 
     while True:
-        confirmation = input("Are you happy to proceed with this order?: ")
+        confirmation = input("Are you happy with this order? (Y / N): ")
 
         if confirmation in ("Y", "y"):
             break
         elif confirmation in ("N", "n"):
-            main_menu()
+            get_name(cust_order)
             break
         else:
             print("Please enter either Y or N (previous entry not valid)")
+
+
+def update_orders(cust_order):
+    # This function will save the order details to the Google Sheet
+    print("Logging your order to the system...")
+    orders_worksheet = SHEET.worksheet("orders")
+    
+    # data list to append
+    order_data = [
+        cust_order.name,
+        cust_order.smoothie,
+        cust_order._size,
+        cust_order.yoghurt,
+        cust_order.price
+    ]
+    print("Order complete ✅")
 
 
 def end_single():
@@ -201,18 +216,7 @@ def end_single():
     print("Your order will be available for collection TODAY from:\n")
     print("           " + collection_time.strftime("%X") + "\n")
     print("Thank you for ordering with print(smoothies)\n\n")
-
-    # adapted return_to_main_menu function
-    while True:
-        end_single = input("\nReturn to main menu? Y / N\n")
-        if end_single in ("Y", "y"):
-            main_menu()
-            break
-        elif end_single in ("N", "n"):
-            print("Have a great day 🙂")
-            break
-        else:
-            print("Please enter either Y or N (previous entry not valid)")
+    print("Have a great day 🙂")
 
 
 def return_to_main_menu():
@@ -277,4 +281,5 @@ select_smoothie(cust_order)
 select_size(cust_order)
 select_yoghurt(cust_order)
 review(cust_order)
+update_orders(cust_order)
 end_single()
