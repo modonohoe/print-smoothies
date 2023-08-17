@@ -97,12 +97,22 @@ This flowchart made with Lucidchart helped me to identify the necessary steps fo
 
 ## **Testing and Validation**
 
-- I tested the game in the following browsers: Chrome, Firefox and Edge.
-- The game has been tested on multiple mobile devices in person and via all the available devices on Dev Tools toolbar.
-- I confirmed the fonts, colors and all text items are clear, adequately contrasted, legible and easy to understand.
-- Initially LightHouse returned a score of 98% as I skipped the use of 'h2' headings and began using 'h3'. This was flagged as bad practice for screen readers and all headings below 'h1' were amended.
+- I tested the game in the following browsers: Chrome, Firefox, Safari and Edge.
+- The only issue encountered on Firefox related to the Unicode characters missing half of their display:
 
-![Lighthouse Score](assets/images/documentation/lighthouse-review.jpg)
+![unicode Firefox issue](assets/documentation/unicode_emojis_firefox.png)
+
+No other issues with the program were detected in the browser testing.
+
+- The game has been tested on multiple mobile devices in person and via all the available devices on Dev Tools toolbar.
+This program does not work well on iPhone (particularly as there is no 'enter' button only a 'return' which two of my friends who tested the program said would not let them input anything). This issue appears to only apply to iPhone and not Apple iOs in general as the program runs well on Mac (excep as seen below where the name 'Theresa', when entered on a Mac computer, caused a once-off bug.)
+
+![Mac one-off bug](assets/documentation/theresa-bug.png)
+
+
+- The API linking the data to the Google Sheet was tested extensively and information is updating as expected:
+
+![Google Sheets testing](assets/documentation/sheets-testing.png)
 
 ### **Bugs**
 
@@ -138,7 +148,9 @@ This was resolved by calling the proceeding functions for the order again direct
 
 #### **Validator testing**
 
+- The program was validated via the Code Institute Linter and returned no errors.
 
+![Validator result](assets/documentation/validator.png)
 
 #### **Unfixed bugs**
 
