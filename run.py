@@ -204,6 +204,8 @@ def update_orders(cust_order):
         cust_order.yoghurt,
         cust_order.price
     ]
+
+    orders_worksheet.append_row(order_data)
     print("Order complete ✅")
 
 
