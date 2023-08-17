@@ -92,21 +92,21 @@ def select_smoothie(cust_order):
                  "Green Energy Boost", "Mango Mix", "Pomegranate Passion",
                  "Peaches and Cream", "print(smoothies) Power Pop"]
 
-    cust_order.smoothie = int(input("Enter smoothie id number: \n"))
-    # parse user input to use as an index number
-
     while True:
-        # condition checks that number is not <10
-        if 1 <= cust_order.smoothie <= len(smoothies):
-            cust_order.smoothie = smoothies[cust_order.smoothie - 1]
-            print(cust_order.smoothie + " added to order ✨\n")
-            break
-        elif cust_order.smoothie.isalpha():
-            print("Please enter the ID number, not name. Try again: ")
-        elif is not 1 <= cust_order.smoothie <= len(smoothies):
-            print("Invalid smoothie number. Please try again.")
-        else:
-            print("Invalid smoothie number. Please try again.")
+        try:
+            cust_order.smoothie = int(input("Enter smoothie id number: \n"))
+            # parse user input to use as an index number
+        
+            # condition checks that number is not <10
+            if 1 <= cust_order.smoothie <= len(smoothies):
+                cust_order.smoothie = smoothies[cust_order.smoothie - 1]
+                print(cust_order.smoothie + " added to order ✨\n")
+                break
+            else:
+                print("Invalid smoothie number. Please try again.")
+        except ValueError:
+            print("Please enter a valid number (no letters/symbols)")
+            continue
 
     return cust_order.smoothie
 
