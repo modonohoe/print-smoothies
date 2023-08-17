@@ -193,13 +193,13 @@ def review(cust_order):
             print("Please enter either Y or N (previous entry not valid)")
 
 
-def end_reoccuring(self):
+def end_single():
     """
     Displays final confirmation message
-    for a reoccuring order
+    for a 'one-off' single order
     """
     print("\n🎉 🎉 🎉   ORDER SUCCESSFUL!  🎉 🎉 🎉\n")
-    print("Your order will be available ???????????????????:\n")
+    print("Your order will be available for collection TODAY from:\n")
     print("           " + collection_time.strftime("%X") + "\n")
     print("Thank you for ordering with print(smoothies)\n\n")
 
@@ -259,7 +259,7 @@ def main_menu():
     print("or order for collection through this terminal!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
     print("Please enter one of the following (1, 2 or 3) then PRESS ENTER:")
-    print(" 1 = view menu \n 2 = order \n 3 = set up reocurring order \n")
+    print(" 1 = view current menu \n 2 = place order for collection \n")
 
     menu_action = input("Your Choice: ")
 
@@ -269,7 +269,7 @@ def main_menu():
         get_name(cust_order)
     else:
         raise ValueError(
-            f"Please enter either 1 or 2 (previous entry not valid)"
+            f"Please enter either 1, 2 or 3 (previous entry not valid)"
         )
 
 
